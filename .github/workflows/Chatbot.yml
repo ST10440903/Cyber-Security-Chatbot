@@ -1,5 +1,4 @@
-name: namespace Cyber_Security_Chatbot CI
-
+name: C# CI Pipeline
 
 on:
   push:
@@ -24,14 +23,10 @@ jobs:
         uses: NuGet/setup-nuget@v1
 
       - name: Restore NuGet packages
-        run: nuget restore "Cyber Security Chatbot.sln"
-      
-      - name: Build Project
-        run: msbuild "Cyber Security Chatbot.sln" /p:Configuration=Release
+        run: nuget restore "CyberAwarenessBot.sln"
 
       - name: Check Code Formatting
-        run: |
-          dotnet format --verify-no-changes "Cyber Security Chatbot.sln"
-          if ($LASTEXITCODE -ne 0) {
-            throw "Code formatting issues detected. Please fix them before proceeding."
-          }
+        run: dotnet format --verify-no-changes "CyberAwarenessBot.sln" || exit 1
+
+      - name: Build Project
+        run: msbuild "CyberAwarenessBot.sln" /p:Configuration=Release
