@@ -25,9 +25,13 @@ jobs:
 
       - name: Restore NuGet packages
         run: nuget restore "Cyber Security Chatbot.sln"
-
-      - name: Check Code Formatting
-        run: dotnet format --verify-no-changes "Cyber Security Chatbot.sln" || exit 1
-
+      
       - name: Build Project
         run: msbuild "Cyber Security Chatbot.sln" /p:Configuration=Release
+
+      - name: Check Code Formatting
+        run: |
+          dotnet format --verify-no-changes "Cyber Security Chatbot.sln"
+          if ($LASTEXITCODE -ne 0) {
+            throw "Code formatting issues detected. Please fix them before proceeding."
+          }
