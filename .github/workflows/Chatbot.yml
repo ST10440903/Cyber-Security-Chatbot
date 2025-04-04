@@ -24,10 +24,10 @@ jobs:
         uses: NuGet/setup-nuget@v1
 
       - name: Restore NuGet packages
-        run: nuget restore "Cyber_Security_Chatbot.sln"
+        run: nuget restore "Cyber Security Chatbot.sln"
 
       - name: Check Code Formatting
-        run: dotnet format --verify-no-changes "Cyber_Security_Chatbot.sln" || exit 1
+        run: dotnet format --verify-no-changes "Cyber Security Chatbot.sln" || exit 1
 
       - name: Build Project
-        run: msbuild "Cyber_Security_Chatbot.sln" /p:Configuration=Release
+        run: msbuild "Cyber Security Chatbot.sln" /p:Configuration=Release
