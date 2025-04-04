@@ -22,7 +22,7 @@ namespace Cyber_Security_Chatbot
         {
             try
             {
-                SoundPlayer player = new SoundPlayer("welcome.wav");  //Audio file is linked here
+                SoundPlayer player = new SoundPlayer("welcomeUser.wav");  //Audio file is linked here
                 player.PlaySync();
             }
             catch (Exception ex)
